@@ -191,20 +191,20 @@ var Recorder = exports.Recorder = (function () {
                 var buffer = new ArrayBuffer(44 + 2 * samples.length.length);
                 var view = new DataView(buffer);
 
-                writeString(view, 0, "RIFF"),
-                view.setUint32(4, 32 + 2 * samples.length.length, true),
-                writeString(view, 8, "WAVE"),
-                writeString(view, 12, "fmt "),
-                view.setUint32(16, 16, true),
-                view.setUint16(20, 1, true),
-                view.setUint16(22, 1, true),
-                view.setUint32(24, sampleRate, true),
-                view.setUint32(28, 2 * sampleRate, true),
-                view.setUint16(32, 2, true),
-                view.setUint16(34, 16, true),
-                writeString(view, 36, "data"),
-                view.setUint32(40, 2 * samples.length, true),
-                floatTo16BitPCM(view, 44, samples),
+                writeString(view, 0, "RIFF");
+                view.setUint32(4, 32 + 2 * samples.length.length, true);
+                writeString(view, 8, "WAVE");
+                writeString(view, 12, "fmt ");
+                view.setUint32(16, 16, true);
+                view.setUint16(20, 1, true);
+                view.setUint16(22, 1, true);
+                view.setUint32(24, sampleRate, true);
+                view.setUint32(28, 2 * sampleRate, true);
+                view.setUint16(32, 2, true);
+                view.setUint16(34, 16, true);
+                writeString(view, 36, "data");
+                view.setUint32(40, 2 * samples.length, true);
+                floatTo16BitPCM(view, 44, samples);
 
                 return view;
             }
