@@ -188,11 +188,11 @@ var Recorder = exports.Recorder = (function () {
             }
 
             function encodeWAV(samples) {
-                var buffer = new ArrayBuffer(44 + 2 * samples.length.length);
+                var buffer = new ArrayBuffer(44 + 2 * samples.length);
                 var view = new DataView(buffer);
 
                 writeString(view, 0, "RIFF");
-                view.setUint32(4, 32 + 2 * samples.length.length, true);
+                view.setUint32(4, 32 + 2 * samples.length, true);
                 writeString(view, 8, "WAVE");
                 writeString(view, 12, "fmt ");
                 view.setUint32(16, 16, true);
